@@ -1,0 +1,14 @@
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\bin\Debug\netcoreapp3.1\Anagrama.exe
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\bin\Debug\netcoreapp3.1\Anagrama.deps.json
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\bin\Debug\netcoreapp3.1\Anagrama.runtimeconfig.json
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\bin\Debug\netcoreapp3.1\Anagrama.runtimeconfig.dev.json
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\bin\Debug\netcoreapp3.1\Anagrama.dll
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\bin\Debug\netcoreapp3.1\Anagrama.pdb
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\obj\Debug\netcoreapp3.1\Anagrama.vbproj.AssemblyReference.cache
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\obj\Debug\netcoreapp3.1\Anagrama.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\obj\Debug\netcoreapp3.1\Anagrama.AssemblyInfoInputs.cache
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\obj\Debug\netcoreapp3.1\Anagrama.AssemblyInfo.vb
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\obj\Debug\netcoreapp3.1\Anagrama.vbproj.CoreCompileInputs.cache
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\obj\Debug\netcoreapp3.1\Anagrama.dll
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\obj\Debug\netcoreapp3.1\Anagrama.pdb
+C:\Users\DANIEL-PC\source\repos\Anagrama\Anagrama\obj\Debug\netcoreapp3.1\Anagrama.genruntimeconfig.cache
