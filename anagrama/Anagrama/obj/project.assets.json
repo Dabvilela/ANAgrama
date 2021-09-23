@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DANIEL-PC\\source\\repos\\Anagrama\\Anagrama\\Anagrama.vbproj",
+      "projectUniqueName": "C:\\Users\\DANIEL-PC\\Documents\\Personal Projects\\anagrama\\Anagrama\\Anagrama.vbproj",
       "projectName": "Anagrama",
-      "projectPath": "C:\\Users\\DANIEL-PC\\source\\repos\\Anagrama\\Anagrama\\Anagrama.vbproj",
+      "projectPath": "C:\\Users\\DANIEL-PC\\Documents\\Personal Projects\\anagrama\\Anagrama\\Anagrama.vbproj",
       "packagesPath": "C:\\Users\\DANIEL-PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DANIEL-PC\\source\\repos\\Anagrama\\Anagrama\\obj\\",
+      "outputPath": "C:\\Users\\DANIEL-PC\\Documents\\Personal Projects\\anagrama\\Anagrama\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
