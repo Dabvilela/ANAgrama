@@ -7,13 +7,13 @@ Module Program
         Dim palavra As String
         Dim qtd_letras As Integer
 
-        Console.WriteLine("digite uma palavra: ")
+        Console.WriteLine("Digite uma palavra: ")
         palavra = Console.ReadLine()
         palavra = palavra.ToLower()
         qtd_letras = palavra.Length
 
         If Not palavra.Length > 1 Then
-            Console.WriteLine("Nao foi identificado nenhuma palavra")
+            Console.WriteLine("Não foi identificado nenhuma palavra")
             Exit Sub
         End If
 
@@ -40,16 +40,16 @@ Module Program
         BubblesortPermute(palavraListada, leftLetters, rightletterstr, showMsg:=False)
 
         permutacao = alfa / delta
-        Console.WriteLine($"A quantidade de permutações possiveis para a palavra {palavra.ToUpper} é igual a {permutacao}")
+        Console.WriteLine($"A quantidade de permutações possíveis para a palavra {palavra.ToUpper} é igual a {permutacao}")
 
         Dim datetick1 = Now.Ticks
         Dim tempo1000ms = (datetick1 - datetick) / 10000
         Dim tempoGastoPermuta = (permutacao * tempo1000ms) / 1000
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta} ms")
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta / 3600000} horas")
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta / 87400000 } dias")
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta / 2628000000} meses")
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta / 31540000000 } ano")
+        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta} ms")
+        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta / 3600000} horas")
+        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta / 87400000 } dias")
+        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta / 2628000000} meses")
+        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta / 31540000000 } ano")
 
         Console.WriteLine("Deseja imprimir todas as variações(y para sim / n para não): ")
         Dim escolha = Console.ReadLine()
