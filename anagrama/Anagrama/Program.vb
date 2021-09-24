@@ -4,6 +4,7 @@ Module Program
     Property permutacao As Double
     Property contador As Integer = 0
     Sub Main(args As String())
+
         Dim palavra As String
         Dim qtd_letras As Integer
 
@@ -40,16 +41,34 @@ Module Program
         BubblesortPermute(palavraListada, leftLetters, rightletterstr, showMsg:=False)
 
         permutacao = alfa / delta
-        Console.WriteLine($"A quantidade de permutações possiveis para a palavra {palavra.ToUpper} é igual a {permutacao}")
+        Console.WriteLine($"A quantidade de permutações possiveis para a palavra {palavra.ToUpper} é igual a {permutacao.ToString("F2")}")
 
         Dim datetick1 = Now.Ticks
         Dim tempo1000ms = (datetick1 - datetick) / 10000
-        Dim tempoGastoPermuta = (permutacao * tempo1000ms) / 1000
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta} ms")
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta / 3600000} horas")
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta / 87400000 } dias")
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta / 2628000000} meses")
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermuta / 31540000000 } ano")
+        Dim tempoGastoPermutaMs = (permutacao * tempo1000ms) / 1000
+        Dim tempoGastoPermutaHora = tempoGastoPermutaMs / 3600000
+        Dim tempoGastoPermutaDia = tempoGastoPermutaMs / 87400000
+        Dim tempoGastoPermutaMes = tempoGastoPermutaMs / 2628000000
+        Dim tempoGastoPermutaAno = tempoGastoPermutaMs / 31540000000
+
+        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaMs.ToString("F2")} ms")
+
+        If tempoGastoPermutaHora >= 1 Then
+            Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaHora.ToString("F2")} horas")
+        End If
+
+        If tempoGastoPermutaDia >= 1 Then
+            Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaDia.ToString("F2")} dias")
+        End If
+
+        If tempoGastoPermutaMes >= 1 Then
+            Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaMes.ToString("F2")} meses")
+        End If
+
+        If tempoGastoPermutaAno >= 1 Then
+            Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaAno.ToString("F2")} ano")
+        End If
+
 
         Console.WriteLine("Deseja imprimir todas as variações(y para sim / n para não): ")
         Dim escolha = Console.ReadLine()
