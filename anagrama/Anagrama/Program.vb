@@ -1,103 +1,157 @@
 Imports System
 
 Module Program
-    Property permutacao As Double
-    Property contador As Integer = 0
+
+    Property qtdeCombinacoesPossiveis As Long
+    Property qtdCombinacaoAtual As Integer = 0
+
+    Property palavra As String
+    Property listCharPalavra As New List(Of Char)
+
     Sub Main(args As String())
 
-        Dim palavra As String
-        Dim qtd_letras As Integer
+        Print("")
 
-        Console.WriteLine("Digite uma palavra: ")
-        palavra = Console.ReadLine()
-        palavra = palavra.ToLower()
-        qtd_letras = palavra.Length
+        palavra = "hatarakerebanaranai"
 
-        If Not palavra.Length > 1 Then
-            Console.WriteLine("Não foi identificado nenhuma palavra")
+        If Not ValidarPalavra() Then
             Exit Sub
         End If
 
-        Dim alfa = Fatorial(qtd_letras)
-        Dim dicionario = Percorrer_letras(palavra)
-        Dim listDeltaFat = GetListDelta(dicionario)
-        Dim delta As Double = 1
+        PopularVariaveisGlobais()
 
-        For Each item In listDeltaFat
-            delta *= item
-        Next
+        PrintRelatorio1000Combinacoes()
 
+        ImprimirTodasVariacoes()
 
-        Dim palavraListada As New List(Of Char)
-        For Each letras In palavra
-            palavraListada.Add(letras)
-        Next
-        palavraListada.Sort()
-        Dim leftLetters = 0
-        Dim rightletterstr = palavraListada.Count - 1
+    End Sub
+    Private Sub PopularVariaveisGlobais()
+        palavra = palavra.ToLower()
+        setQtdeCombinacoesPossiveis(palavra)
+        setListChar(palavra)
+    End Sub
 
-        Dim datetick = Now.Ticks
-        permutacao = 1000
-        BubblesortPermute(palavraListada, leftLetters, rightletterstr, showMsg:=False)
+    Private Sub ImprimirTodasVariacoes()
 
-        permutacao = alfa / delta
-<<<<<<< HEAD
-        Console.WriteLine($"A quantidade de permutações possiveis para a palavra {palavra.ToUpper} é igual a {permutacao.ToString("F2")}")
-
-        Dim datetick1 = Now.Ticks
-        Dim tempo1000ms = (datetick1 - datetick) / 10000
-        Dim tempoGastoPermutaMs = (permutacao * tempo1000ms) / 1000
-        Dim tempoGastoPermutaHora = tempoGastoPermutaMs / 3600000
-        Dim tempoGastoPermutaDia = tempoGastoPermutaMs / 87400000
-        Dim tempoGastoPermutaMes = tempoGastoPermutaMs / 2628000000
-        Dim tempoGastoPermutaAno = tempoGastoPermutaMs / 31540000000
-
-        Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaMs.ToString("F2")} ms")
-
-        If tempoGastoPermutaHora >= 1 Then
-            Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaHora.ToString("F2")} horas")
-        End If
-
-        If tempoGastoPermutaDia >= 1 Then
-            Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaDia.ToString("F2")} dias")
-        End If
-
-        If tempoGastoPermutaMes >= 1 Then
-            Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaMes.ToString("F2")} meses")
-        End If
-
-        If tempoGastoPermutaAno >= 1 Then
-            Console.WriteLine($"O tempo gasto em media sera igual a : {tempoGastoPermutaAno.ToString("F2")} ano")
-        End If
-
-=======
-        Console.WriteLine($"A quantidade de permutações possíveis para a palavra {palavra.ToUpper} é igual a {permutacao}")
-
-        Dim datetick1 = Now.Ticks
-        Dim tempo1000ms = (datetick1 - datetick) / 10000
-        Dim tempoGastoPermuta = (permutacao * tempo1000ms) / 1000
-        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta} ms")
-        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta / 3600000} horas")
-        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta / 87400000 } dias")
-        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta / 2628000000} meses")
-        Console.WriteLine($"O tempo gasto em média será igual a : {tempoGastoPermuta / 31540000000 } ano")
->>>>>>> main
-
-        Console.WriteLine("Deseja imprimir todas as variações(y para sim / n para não): ")
+        Print("Deseja imprimir todas as variações(y para sim / n para não): ")
         Dim escolha = Console.ReadLine()
         escolha = escolha.ToLower
-        Dim showmsg As Boolean = False
 
         If escolha = "y" Then
-            contador = 0
+            qtdCombinacaoAtual = 0
             Console.WriteLine("lista de todas as variações: ")
-            BubblesortPermute(palavraListada, leftLetters, rightletterstr, showMsg:=True)
+            BubblesortPermute(listCharPalavra, leftletter:=0, rightletterstr:=listCharPalavra.Count - 1, showMsg:=True, qtdCombinacoesMaxima:=qtdeCombinacoesPossiveis)
         End If
 
         If escolha = "n" Then
             Console.WriteLine("bye")
         End If
 
+    End Sub
+
+    Public Sub BubblesortPermute(palavralistada As List(Of Char), leftletter As Integer, rightletterstr As Integer, showMsg As Boolean, qtdCombinacoesMaxima As Long)
+
+        Dim i As Integer
+        If qtdCombinacaoAtual = qtdCombinacoesMaxima Then
+            Exit Sub
+        End If
+
+        If leftletter = rightletterstr Then
+            qtdCombinacaoAtual += 1
+            If showMsg Then Console.WriteLine(qtdCombinacaoAtual & " " & palavralistada.ToArray)
+        Else
+            i = leftletter
+            While i <= rightletterstr
+                swapstr(palavralistada, leftletter, i)
+                BubblesortPermute(palavralistada, leftletter + 1, rightletterstr, showMsg, qtdCombinacoesMaxima)
+                swapstr(palavralistada, leftletter, i)
+                i += 1
+            End While
+        End If
+
+    End Sub
+
+    Private Sub setListChar(palavra As String)
+
+        Dim lista As New List(Of Char)
+        For Each letras In palavra
+            lista.Add(letras)
+        Next
+
+        lista.Sort()
+
+        listCharPalavra = lista
+
+    End Sub
+
+    Private Sub setQtdeCombinacoesPossiveis(palavra As String)
+        Dim alfa = Fatorial(palavra.Length)
+        Dim delta = GetDeltaLetrasRepetidas(palavra)
+        qtdeCombinacoesPossiveis = alfa / delta
+    End Sub
+
+    Private Function ValidarPalavra() As Boolean
+
+        If Not palavra.Length > 1 Then
+            Console.WriteLine("Não foi identificado nenhuma palavra")
+            Return False
+        End If
+
+        If String.IsNullOrEmpty(palavra) Then
+            Console.WriteLine("Nenhuma palavra foi digitada")
+            Return False
+        End If
+
+        Return True
+
+    End Function
+
+    Private Sub PrintRelatorio1000Combinacoes()
+
+        qtdCombinacaoAtual = 0
+
+        Dim tempoAntesProcessar = Now.Ticks
+        BubblesortPermute(listCharPalavra, leftletter:=0, rightletterstr:=listCharPalavra.Count - 1, showMsg:=False, qtdCombinacoesMaxima:=1000)
+        Dim tempoTotalProcessamento = (Now.Ticks - tempoAntesProcessar)
+
+        Dim tempo1000ms = tempoTotalProcessamento / 10000
+
+        Dim tempoGastoPermutaMs = (qtdeCombinacoesPossiveis * tempo1000ms) / 1000
+        Dim tempoGastoPermutaHora = tempoGastoPermutaMs / 3600000
+        Dim tempoGastoPermutaDia = tempoGastoPermutaMs / 87400000
+        Dim tempoGastoPermutaMes = tempoGastoPermutaMs / 2628000000
+        Dim tempoGastoPermutaAno = tempoGastoPermutaMs / 31540000000
+
+        Print($"Qtde de combinações possíveis para palavra: {palavra.ToUpper} é igual a: {qtdeCombinacoesPossiveis}")
+        Print("O tempo gasto para imprimir todas as permutações será em média igual a: ")
+
+        If tempoGastoPermutaAno >= 1 Then
+            Console.WriteLine(Chr(9) & $"Ano {tempoGastoPermutaAno.ToString("F2")}")
+            Exit Sub
+        End If
+
+        If tempoGastoPermutaMes >= 1 Then
+            Console.WriteLine(Chr(9) & $"Meses {tempoGastoPermutaMes.ToString("F2")}")
+            Exit Sub
+        End If
+
+        If tempoGastoPermutaDia >= 1 Then
+            Console.WriteLine(Chr(9) & $"Dias {tempoGastoPermutaDia.ToString("F2")}")
+            Exit Sub
+        End If
+
+        If tempoGastoPermutaHora >= 1 Then
+            Console.WriteLine(Chr(9) & $"Horas {tempoGastoPermutaHora.ToString("F2")}")
+            Exit Sub
+        End If
+
+        Console.WriteLine(Chr(9) & $"Ms {tempoGastoPermutaMs.ToString("F2")}")
+
+    End Sub
+
+    Private Sub Print(msg As String)
+        Console.WriteLine("")
+        Console.WriteLine(msg)
     End Sub
 
     Private Function Fatorial(n As Integer) As Double
@@ -129,45 +183,29 @@ Module Program
 
     End Function
 
-    Private Function GetListDelta(dicionario As Dictionary(Of String, Integer)) As List(Of Integer)
+    Private Function GetDeltaLetrasRepetidas(palavra As String) As Double
 
-        Dim listDeltaRepetidos As New List(Of Integer)
+        Dim dictListaLetrasComQtdeRepetidas = Percorrer_letras(palavra)
 
-        For Each item In dicionario
+        Dim listaQtdeLetrasRepetidas As New List(Of Integer)
+        Dim delta = 1
+        For Each item In dictListaLetrasComQtdeRepetidas
 
             If item.Value > 1 Then
-
-                listDeltaRepetidos.Add(Fatorial(item.Value))
+                listaQtdeLetrasRepetidas.Add(Fatorial(item.Value))
             Else
-                listDeltaRepetidos.Add(1)
+                listaQtdeLetrasRepetidas.Add(1)
             End If
 
         Next
 
-        Return listDeltaRepetidos
+        For Each qtdCadaLetra In listaQtdeLetrasRepetidas
+            delta *= qtdCadaLetra
+        Next
+
+        Return delta
 
     End Function
-
-    Public Sub BubblesortPermute(palavralistada As List(Of Char), leftletter As Integer, rightletterstr As Integer, showMsg As Boolean)
-        Dim i As Integer
-        If contador = permutacao Then
-            Exit Sub
-        End If
-
-        If leftletter = rightletterstr Then
-            contador += 1
-            If showMsg Then Console.WriteLine(contador & " " & palavralistada.ToArray)
-        Else
-            i = leftletter
-            While i <= rightletterstr
-                swapstr(palavralistada, leftletter, i)
-                BubblesortPermute(palavralistada, leftletter + 1, rightletterstr, showMsg)
-                swapstr(palavralistada, leftletter, i)
-                i += 1
-            End While
-        End If
-
-    End Sub
 
     Private Sub swapstr(numeros As List(Of Char), leftLetter As Integer, rightLetterstr As Integer)
 
