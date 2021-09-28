@@ -6,14 +6,13 @@ Module Program
     Property qtdCombinacaoAtual As Integer = 0
     Property palavra As String
     Property listCharPalavra As New List(Of Char)
-
     Property ProgressBar As ProgressBar = New ProgressBar()
 
     Sub Main(args As String())
 
         Print("")
 
-        palavra = "daniele"
+        palavra = "daniel"
 
         If Not ValidarPalavra() Then
             Exit Sub
@@ -53,7 +52,6 @@ Module Program
             qtdCombinacaoAtual += 1
             If showMsg Then
 
-                '"###......"
                 Dim progresso = ProgressBar.GetProgress(qtdCombinacaoAtual).ToArray
                 Dim porcentagem = (qtdCombinacaoAtual * 100) / qtdeCombinacoesPossiveis
 
