@@ -11,8 +11,8 @@ Module Program
     Sub Main(args As String())
 
         Print("")
-
-        palavra = "daniel"
+        Console.WriteLine("digite uma palavra: ")
+        palavra = Console.ReadLine()
 
         If Not ValidarPalavra() Then
             Exit Sub
@@ -33,7 +33,11 @@ Module Program
 
     Private Sub ImprimirTodasVariacoes()
 
-        If True Then
+        Print("Deseja imprimir todas as variacoes(y para sim / n para nao): ")
+        Dim escolha = Console.ReadLine()
+        escolha = escolha.ToLower
+
+        If escolha = "y" Then
             qtdCombinacaoAtual = 0
             Console.WriteLine("lista de todas as variações: ")
             BubblesortPermute(listCharPalavra, leftletter:=0, rightletterstr:=listCharPalavra.Count - 1, showMsg:=True, qtdCombinacoesMaxima:=qtdeCombinacoesPossiveis)

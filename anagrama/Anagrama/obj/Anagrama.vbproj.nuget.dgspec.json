@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DANIEL-PC\\Documents\\Personal Projects\\anagrama_github\\ANAgrama\\anagrama\\Anagrama\\Anagrama.vbproj": {}
+    "C:\\Users\\Daniel\\Documents\\projects\\ANAgrama github\\ANAgrama\\anagrama\\Anagrama\\Anagrama.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\DANIEL-PC\\Documents\\Personal Projects\\anagrama_github\\ANAgrama\\anagrama\\Anagrama\\Anagrama.vbproj": {
+    "C:\\Users\\Daniel\\Documents\\projects\\ANAgrama github\\ANAgrama\\anagrama\\Anagrama\\Anagrama.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DANIEL-PC\\Documents\\Personal Projects\\anagrama_github\\ANAgrama\\anagrama\\Anagrama\\Anagrama.vbproj",
+        "projectUniqueName": "C:\\Users\\Daniel\\Documents\\projects\\ANAgrama github\\ANAgrama\\anagrama\\Anagrama\\Anagrama.vbproj",
         "projectName": "Anagrama",
-        "projectPath": "C:\\Users\\DANIEL-PC\\Documents\\Personal Projects\\anagrama_github\\ANAgrama\\anagrama\\Anagrama\\Anagrama.vbproj",
-        "packagesPath": "C:\\Users\\DANIEL-PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DANIEL-PC\\Documents\\Personal Projects\\anagrama_github\\ANAgrama\\anagrama\\Anagrama\\obj\\",
+        "projectPath": "C:\\Users\\Daniel\\Documents\\projects\\ANAgrama github\\ANAgrama\\anagrama\\Anagrama\\Anagrama.vbproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Daniel\\Documents\\projects\\ANAgrama github\\ANAgrama\\anagrama\\Anagrama\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\DANIEL-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
