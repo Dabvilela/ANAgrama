@@ -4,7 +4,6 @@ Module Program
 
     Property qtdeCombinacoesPossiveis As Long
     Property qtdCombinacaoAtual As Integer = 0
-
     Property palavra As String
     Property listCharPalavra As New List(Of Char)
 
