@@ -1,26 +1,29 @@
- Dim index As Integer = 0
-        Dim porcentagem As Double
-        Dim permutacao As Integer = 720
-        Dim hashtagindex As Integer = 0
-        Dim palavra As String = "Andre"
-        Dim s As String = ".........."
-        Console.Write(s)
-        Console.Write(palavra & "0%" & s & "100% " & porcentagem)
-        While index <= permutacao
-            Dim hashstr = "#".Concat(For each  )
-            Dim res = s.Take(hashtagindex).Concat("#").Concat(s.Where(Function(c, i) i > hashtagindex))
-            Console.Write(palavra & "0%" & res.ToArray & "100% " & porcentagem)
-            Console.SetCursorPosition(palavra.Length + 1 + hashtagindex, Console.CursorTop)
-            Console.Write("#")
-            porcentagem = (index * 100) / permutacao
+Public Class ProgressBar
 
-            If (porcentagem Mod 10) = 0 Then
-                Thread.Sleep(300)
-                Console.SetCursorPosition(palavra.Length + 1 + hashtagindex, Console.CursorTop)
-                Console.Write("#")
-                hashtagindex += 1
-            End If
+    Public Property qtdeCombinacoesPossiveis As Long
+    Public Property progress = New List(Of Char)
 
+    Private Property index As Integer = 0
+
+    Public Sub New()
+        For i = 0 To 99
+            progress.Add("."c)
+        Next
+    End Sub
+
+
+    Public Function GetProgress(qtdCombinacaoAtual As Integer) As List(Of Char)
+
+        Dim porcentagem As Double = (qtdCombinacaoAtual * 100) / qtdeCombinacoesPossiveis
+
+        If (porcentagem Mod 1) = 0 Then
+            progress(index) = "#"
             index += 1
-            Console.WriteLine("")
-        End While
+        End If
+
+        Return progress
+
+    End Function
+
+
+End Class

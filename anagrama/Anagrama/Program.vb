@@ -7,11 +7,13 @@ Module Program
     Property palavra As String
     Property listCharPalavra As New List(Of Char)
 
+    Property ProgressBar As ProgressBar = New ProgressBar()
+
     Sub Main(args As String())
 
         Print("")
 
-        palavra = "hatarakerebanaranai"
+        palavra = "daniele"
 
         If Not ValidarPalavra() Then
             Exit Sub
@@ -32,18 +34,10 @@ Module Program
 
     Private Sub ImprimirTodasVariacoes()
 
-        Print("Deseja imprimir todas as variações(y para sim / n para não): ")
-        Dim escolha = Console.ReadLine()
-        escolha = escolha.ToLower
-
-        If escolha = "y" Then
+        If True Then
             qtdCombinacaoAtual = 0
             Console.WriteLine("lista de todas as variações: ")
             BubblesortPermute(listCharPalavra, leftletter:=0, rightletterstr:=listCharPalavra.Count - 1, showMsg:=True, qtdCombinacoesMaxima:=qtdeCombinacoesPossiveis)
-        End If
-
-        If escolha = "n" Then
-            Console.WriteLine("bye")
         End If
 
     End Sub
@@ -57,7 +51,15 @@ Module Program
 
         If leftletter = rightletterstr Then
             qtdCombinacaoAtual += 1
-            If showMsg Then Console.WriteLine(qtdCombinacaoAtual & " " & palavralistada.ToArray)
+            If showMsg Then
+
+                '"###......"
+                Dim progresso = ProgressBar.GetProgress(qtdCombinacaoAtual).ToArray
+                Dim porcentagem = (qtdCombinacaoAtual * 100) / qtdeCombinacoesPossiveis
+
+                Console.WriteLine(qtdCombinacaoAtual & " " & palavralistada.ToArray & " " & progresso & " [" & porcentagem.ToString("F2") & "]% ")
+
+            End If
         Else
             i = leftletter
             While i <= rightletterstr
@@ -87,6 +89,7 @@ Module Program
         Dim alfa = Fatorial(palavra.Length)
         Dim delta = GetDeltaLetrasRepetidas(palavra)
         qtdeCombinacoesPossiveis = alfa / delta
+        ProgressBar.qtdeCombinacoesPossiveis = qtdeCombinacoesPossiveis
     End Sub
 
     Private Function ValidarPalavra() As Boolean
